@@ -103,7 +103,20 @@ class DatasetCatalog(object):
         "cityscapes_fine_instanceonly_seg_test_cocostyle": {
             "img_dir": "cityscapes/images",
             "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_test.json"
+        },
+        "visdrone_2018_det_train_cocostyle": {
+            "img_dir": "VisDrone2018-DET-train/images",
+            "ann_file": "VisDrone2018-DET-train/annotations/train.json"
+        },
+        "visdrone_2018_det_val_cocostyle": {
+            "img_dir": "VisDrone2018-DET-val/images",
+            "ann_file": "VisDrone2018-DET-val/annotations/val.json"
+        },
+        "visdrone_2018_det_test_challenge_cocostyle": {
+            "img_dir": "VisDrone2018-DET-test-challenge/images",
+            "ann_file": "VisDrone2018-DET-test-challenge/annotations/test-challenge.json"
         }
+
     }
 
     @staticmethod
