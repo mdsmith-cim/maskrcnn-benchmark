@@ -138,7 +138,7 @@ and we have divided the learning rate by 8x.
 We also changed the batch size during testing, but that is generally not necessary because testing
 requires much less memory than training.
 
-Furthermore, we set ```MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN 2000``` as the proposals are selected for per the batch rather than per image. The value is calculated by **1000 x images-per-gpu**. Here we have 2 images per GPU, therefore we set the number as 1000 x 2 = 2000. If we have 8 images per GPU, the value should be set as 8000. See [#672](https://github.com/facebookresearch/maskrcnn-benchmark/issues/672) for more details.
+Furthermore, we set `MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN 2000` as the proposals are selected for per the batch rather than per image in the default training. The value is calculated by **1000 x images-per-gpu**. Here we have 2 images per GPU, therefore we set the number as 1000 x 2 = 2000. If we have 8 images per GPU, the value should be set as 8000. Note that this does not apply if `MODEL.RPN.FPN_POST_NMS_PER_BATCH` is set to `False` during training. See [#672](https://github.com/facebookresearch/maskrcnn-benchmark/issues/672) for more details.
 
 ### Multi-GPU training
 We use internally `torch.distributed.launch` in order to launch
@@ -150,7 +150,15 @@ process will only use a single GPU.
 export NGPUS=8
 python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_maskrcnn_benchmark/tools/train_net.py --config-file "path/to/config/file.yaml" MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN images_per_gpu x 1000
 ```
-Note we should set ```MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN``` follow the rule in Single-GPU training.
+Note we should set `MODEL.RPN.FPN_POST_NMS_TOP_N_TRAIN` follow the rule in Single-GPU training.
+
+## Evaluation
+You can test your model directly on single or multiple gpus. Here is an example for Mask R-CNN R-50 FPN with the 1x schedule on 8 GPUS:
+```bash
+export NGPUS=8
+python -m torch.distributed.launch --nproc_per_node=$NGPUS /path_to_maskrcnn_benchmark/tools/test_net.py --config-file "configs/e2e_mask_rcnn_R_50_FPN_1x.yaml" TEST.IMS_PER_BATCH 16
+```
+To calculate mAP for each class, you can simply modify a few lines in [coco_eval.py](https://github.com/facebookresearch/maskrcnn-benchmark/blob/master/maskrcnn_benchmark/data/datasets/evaluation/coco/coco_eval.py). See [#524](https://github.com/facebookresearch/maskrcnn-benchmark/issues/524#issuecomment-475118810) for more details.
 
 ## Abstractions
 For more information on some of the main abstractions in our implementation, see [ABSTRACTIONS.md](ABSTRACTIONS.md).
