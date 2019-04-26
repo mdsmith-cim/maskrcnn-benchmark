@@ -1,0 +1,54 @@
+MODEL:
+  META_ARCHITECTURE: "GeneralizedRCNN"
+  BACKBONE:
+    CONV_BODY: FBNet
+  FBNET:
+    ARCH: "default"
+    BN_TYPE: "bn"
+    WIDTH_DIVISOR: 8
+    DW_CONV_SKIP_BN: True
+    DW_CONV_SKIP_RELU: True
+    DET_HEAD_LAST_SCALE: 0.0
+  RPN:
+    ANCHOR_SIZES: (16, 32, 64, 128, 256)
+    ANCHOR_STRIDE: (16, )
+    BATCH_SIZE_PER_IMAGE: 256
+    PRE_NMS_TOP_N_TRAIN: 6000
+    PRE_NMS_TOP_N_TEST: 6000
+    POST_NMS_TOP_N_TRAIN: 2000
+    POST_NMS_TOP_N_TEST: 100
+    RPN_HEAD: FBNet.rpn_head
+  ROI_HEADS:
+    BATCH_SIZE_PER_IMAGE: 256
+  ROI_BOX_HEAD:
+    POOLER_RESOLUTION: 6
+    FEATURE_EXTRACTOR: FBNet.roi_head
+    NUM_CLASSES: 81
+  ROI_MASK_HEAD:
+    POOLER_RESOLUTION: 6
+    FEATURE_EXTRACTOR: FBNet.roi_head_mask
+    PREDICTOR: "MaskRCNNConv1x1Predictor"
+    RESOLUTION: 12
+    SHARE_BOX_FEATURE_EXTRACTOR: False
+  MASK_ON: False # We don't have masks for this dataset; no point computing it
+DATASETS:
+  TRAIN: ("visdrone_2018_det_train_cocostyle",)
+  TEST: ("visdrone_2018_det_train_cocostyle","visdrone_2018_det_val_cocostyle")
+SOLVER:
+  BASE_LR: 0.0075
+  # 6471 images in train set for VisDrone
+  # # steps. max iter - 1 epoch = # images / batch size
+  WARMUP_FACTOR: 0.1
+  WEIGHT_DECAY: 0.0001
+  STEPS: (667, 889) # Should be 0.66 and 0.88
+  MAX_ITER: 1011 # 5 epochs
+  IMS_PER_BATCH: 32
+TEST:
+  IMS_PER_BATCH: 8
+INPUT:
+  MIN_SIZE_TRAIN: (320, )
+  MAX_SIZE_TRAIN: 640
+  MIN_SIZE_TEST: 320
+  MAX_SIZE_TEST: 640
+  PIXEL_MEAN: [103.53, 116.28, 123.675]
+  PIXEL_STD: [57.375, 57.12, 58.395]

@@ -1,7 +1,9 @@
 #!/bin/bash
 
+START_DIR=$(pwd)
+
 apt-get update -y
-apt-get install -y nano htop wget cifs-utils tmux libxrender-dev git build-essential libsm6 tree
+apt-get install -y nano htop wget cifs-utils tmux libxrender-dev git build-essential libsm6 tree openssh-server
 
 wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O ~/anaconda3.sh \
  && bash ~/anaconda3.sh -b -p /anaconda3 \
@@ -20,16 +22,23 @@ git clone https://github.com/cocodataset/cocoapi.git \
  && python setup.py build_ext install \
  && cd ~
 
-git clone https://github.com/ptrblck/apex.git \
+git clone https://github.com/NVIDIA/apex.git \
  && cd apex \
- && git checkout scalar_type \
  && python setup.py install --cuda_ext --cpp_ext \
  && cd ~
 
-echo "//apl/APL         /APL    cifs    rw,user,username=msmith,noauto,vers=3.02        0       0" >> /etc/fstab
+cd $START_DIR
+
+cp fstab /etc/fstab
+mkdir ~/.ssh
+cp docker_ssh.pub ~/.ssh/authorized_keys
 
 mkdir /APL
+mkdir /var/run/sshd
 
 conda init
 
 echo "Please restart the docker to use Anaconda"
+
+# Meant to be used with
+# docker create --name maskrcnn-devel-mike --runtime=nvidia --mount type=bind,source=/usr/local/data/msmith,target=/usr/local/data/msmith --mount type=bind,source=/home/vision/msmith,target=/home/vision/msmith --mount type=bind,source=/usr/local/data2/msmith,target=/usr/local/data2/msmith --privileged --ipc=host -p 8850:8850 -p 16722:22 -it nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04 bash

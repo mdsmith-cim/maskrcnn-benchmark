@@ -5,7 +5,7 @@ import os
 
 
 class DatasetCatalog(object):
-    DATA_DIR = "datasets"
+    DATA_DIR = "/APL/Datasets/"
     DATASETS = {
         "coco_2017_train": {
             "img_dir": "coco/train2017",
@@ -105,16 +105,16 @@ class DatasetCatalog(object):
             "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_test.json"
         },
         "visdrone_2018_det_train_cocostyle": {
-            "img_dir": "VisDrone2018-DET-train/images",
-            "ann_file": "VisDrone2018-DET-train/annotations/train.json"
+            "img_dir": "VisDrone/VisDrone2018-DET-train/images",
+            "ann_file": "VisDrone/VisDrone2018-DET-train/annotations/train.json"
         },
         "visdrone_2018_det_val_cocostyle": {
-            "img_dir": "VisDrone2018-DET-val/images",
-            "ann_file": "VisDrone2018-DET-val/annotations/val.json"
+            "img_dir": "VisDrone/VisDrone2018-DET-val/images",
+            "ann_file": "VisDrone/VisDrone2018-DET-val/annotations/val.json"
         },
         "visdrone_2018_det_test_challenge_cocostyle": {
-            "img_dir": "VisDrone2018-DET-test-challenge/images",
-            "ann_file": "VisDrone2018-DET-test-challenge/annotations/test-challenge.json"
+            "img_dir": "VisDrone/VisDrone2018-DET-test-challenge/images",
+            "ann_file": "VisDrone/VisDrone2018-DET-test-challenge/annotations/test-challenge.json"
         }
 
     }
