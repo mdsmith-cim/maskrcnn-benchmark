@@ -13,7 +13,7 @@ export PATH=/anaconda3/bin:$PATH
 
 pip install requests ninja yacs cython matplotlib opencv-python tqdm
 
-conda install pytorch-nightly -c pytorch
+conda install pytorch-nightly -c pytorch -y
 
 git clone https://github.com/pytorch/vision.git \
  && cd vision \
