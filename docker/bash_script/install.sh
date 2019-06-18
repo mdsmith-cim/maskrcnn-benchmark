@@ -3,7 +3,7 @@
 START_DIR=$(pwd)
 
 apt-get update -y
-apt-get install -y nano htop wget cifs-utils tmux libxrender-dev git build-essential libsm6 tree openssh-server
+apt-get install -y nano htop wget cifs-utils tmux libxrender-dev git build-essential libsm6 tree openssh-server libglib2.0-0 libsm6 libxext6 tree iotop g++ cmake curl ca-certificates bzip2 apt-utils
 
 wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O ~/anaconda3.sh \
  && bash ~/anaconda3.sh -b -p /anaconda3 \
@@ -11,11 +11,14 @@ wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh -O ~/an
 
 export PATH=/anaconda3/bin:$PATH
 
-pip install numpy torchvision_nightly \
- && pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu100/torch_nightly.html \
- && pip install yacs matplotlib opencv-python
+pip install requests ninja yacs cython matplotlib opencv-python tqdm
 
-cd ~
+conda install pytorch-nightly -c pytorch
+
+git clone https://github.com/pytorch/vision.git \
+ && cd vision \
+ && python setup.py install \
+ && cd ~
 
 git clone https://github.com/cocodataset/cocoapi.git \
  && cd cocoapi/PythonAPI \
