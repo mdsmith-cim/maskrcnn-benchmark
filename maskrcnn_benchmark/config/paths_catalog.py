@@ -15,6 +15,10 @@ class DatasetCatalog(object):
             "img_dir": "coco/val2017",
             "ann_file": "coco/annotations/instances_val2017.json"
         },
+        "coco_2017_test-dev": {
+            "img_dir": "coco/test2017",
+            "ann_file": "coco/annotations/image_info_test-dev2017.json"
+        },
         "coco_2014_train": {
             "img_dir": "coco/train2014",
             "ann_file": "coco/annotations/instances_train2014.json"
@@ -104,17 +108,17 @@ class DatasetCatalog(object):
             "img_dir": "cityscapes/images",
             "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_test.json"
         },
-        "visdrone_2018_det_train_cocostyle": {
-            "img_dir": "VisDrone/VisDrone2018-DET-train/images",
-            "ann_file": "VisDrone/VisDrone2018-DET-train/annotations/train.json"
+        "visdrone_2019_det_train_cocostyle": {
+            "img_dir": "VisDrone2019/VisDrone2019-DET-train/images",
+            "ann_file": "VisDrone2019/VisDrone2019-DET-train/annotations/train.json"
         },
-        "visdrone_2018_det_val_cocostyle": {
-            "img_dir": "VisDrone/VisDrone2018-DET-val/images",
-            "ann_file": "VisDrone/VisDrone2018-DET-val/annotations/val.json"
+        "visdrone_2019_det_val_cocostyle": {
+            "img_dir": "VisDrone2019/VisDrone2019-DET-val/images",
+            "ann_file": "VisDrone2019/VisDrone2019-DET-val/annotations/val.json"
         },
-        "visdrone_2018_det_test_challenge_cocostyle": {
-            "img_dir": "VisDrone/VisDrone2018-DET-test-challenge/images",
-            "ann_file": "VisDrone/VisDrone2018-DET-test-challenge/annotations/test-challenge.json"
+        "visdrone_2019_det_test_challenge_cocostyle": {
+            "img_dir": "VisDrone2019/VisDrone2019-DET-test-challenge/images",
+            "ann_file": "VisDrone2019/VisDrone2019-DET-test-challenge/annotations/test-challenge.json"
         }
 
     }
