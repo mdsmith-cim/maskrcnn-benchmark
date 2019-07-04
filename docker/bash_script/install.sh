@@ -46,4 +46,4 @@ conda init
 echo "Please restart the docker to use Anaconda"
 
 # Meant to be used with
-# docker create --name maskrcnn-devel-mike --runtime=nvidia --mount type=bind,source=/usr/local/data/msmith,target=/usr/local/data/msmith --mount type=bind,source=/home/vision/msmith,target=/home/vision/msmith --mount type=bind,source=/usr/local/data2/msmith,target=/usr/local/data2/msmith --privileged --ipc=host -p 8850:8850 -p 16722:22 -it nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04 bash
+#docker create --name iccv2019-mike --runtime=nvidia --mount type=bind,source=/usr/local/data/msmith,target=/usr/local/data/msmith --mount type=bind,source=/home/vision/msmith,target=/home/vision/msmith --privileged --ipc=host -p 8850:8850 -p 16722:22 -it nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04 bash
