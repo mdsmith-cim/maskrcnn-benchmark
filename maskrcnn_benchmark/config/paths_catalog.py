@@ -119,6 +119,14 @@ class DatasetCatalog(object):
         "visdrone_2019_det_test_challenge_cocostyle": {
             "img_dir": "VisDrone2019/VisDrone2019-DET-test-challenge/images",
             "ann_file": "VisDrone2019/VisDrone2019-DET-test-challenge/annotations/test-challenge.json"
+        },
+        "open_images_2019_challenge_cocostyle_train": {
+            "img_dir": "open-images-challenge-2019/train",
+            "ann_file": "open-images-challenge-2019-COCO-format/train.json"
+        },
+        "open_images_2019_challenge_cocostyle_validation": {
+            "img_dir": "open-images-challenge-2019/validation",
+            "ann_file": "open-images-challenge-2019-COCO-format/validation.json"
         }
 
     }
