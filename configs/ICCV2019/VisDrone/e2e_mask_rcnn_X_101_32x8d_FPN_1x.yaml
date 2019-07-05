@@ -48,4 +48,4 @@ SOLVER:
   # # steps. max iter - 1 epoch = # images / batch size
   # num images for Visdrone = 6471
   IMS_PER_BATCH: 1
-OUTPUT_DIR: "/APL/ICCVResults/VisDrone/MaskRCNN-X-101-32x8d-FPN-July1"
+OUTPUT_DIR: "/APL/ICCVResults/VisDrone/MaskRCNN-X-101-32x8d-FPN-20epoch-July5"
