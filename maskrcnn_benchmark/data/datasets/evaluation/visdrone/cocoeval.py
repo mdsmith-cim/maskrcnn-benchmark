@@ -106,8 +106,7 @@ class COCOeval:
             _toMask(dts, self.cocoDt)
         # set ignore flag
         for gt in gts:
-            gt['ignore'] = gt['ignore'] if 'ignore' in gt else 0
-            gt['ignore'] = 'iscrowd' in gt and gt['iscrowd']
+            gt['ignore'] = (gt['ignore'] if 'ignore' in gt else 0) or ('iscrowd' in gt and gt['iscrowd']) #https://github.com/cocodataset/cocoapi/issues/123
             if p.iouType == 'keypoints':
                 gt['ignore'] = (gt['num_keypoints'] == 0) or gt['ignore']
         self._gts = defaultdict(list)       # gt for evaluation

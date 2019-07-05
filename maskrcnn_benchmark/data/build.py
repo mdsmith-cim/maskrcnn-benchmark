@@ -8,6 +8,10 @@ from maskrcnn_benchmark.utils.comm import get_world_size
 from maskrcnn_benchmark.utils.imports import import_file
 from maskrcnn_benchmark.utils.miscellaneous import save_labels
 
+#Attempted fix for data loader too many open files problem
+import torch.multiprocessing
+torch.multiprocessing.set_sharing_strategy('file_system')
+
 from . import datasets as D
 from . import samplers
 
