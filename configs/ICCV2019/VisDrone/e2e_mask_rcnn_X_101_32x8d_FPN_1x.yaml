@@ -20,6 +20,7 @@ MODEL:
     USE_FPN: True
     DETECTIONS_PER_IMG: 1000
   ROI_BOX_HEAD:
+    NUM_CLASSES: 11 #+1 for background
     POOLER_RESOLUTION: 7
     POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
     POOLER_SAMPLING_RATIO: 2
@@ -42,9 +43,9 @@ DATALOADER:
 SOLVER:
   BASE_LR: 0.00125
   WEIGHT_DECAY: 0.0001
-  STEPS: (42704, 56940) #0.66 , 0.88
-  MAX_ITER: 64708 # 10 epoch
+  STEPS: (85408, 113880) #0.66 , 0.88
+  MAX_ITER: 129416 # 20 epoch
   # # steps. max iter - 1 epoch = # images / batch size
   # num images for Visdrone = 6471
   IMS_PER_BATCH: 1
-OUTPUT_DIR: "/APL/ICCVResults/VisDrone/MaskRCNN-X-101-32x8d-FPN-July1"
+OUTPUT_DIR: "/APL/ICCVResults/VisDrone/MaskRCNN-X-101-32x8d-FPN-20epoch-July5"
