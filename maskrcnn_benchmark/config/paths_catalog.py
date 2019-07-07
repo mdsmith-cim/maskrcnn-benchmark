@@ -127,6 +127,14 @@ class DatasetCatalog(object):
         "open_images_2019_challenge_cocostyle_validation": {
             "img_dir": "open-images-challenge-2019/validation",
             "ann_file": "open-images-challenge-2019-COCO-format/validation.json"
+        },
+        "UAVDT_2018_train_cocostyle": {
+            "img_dir": "UAVBenchmark-COCO-format/train",
+            "ann_file": "UAVBenchmark-COCO-format/train.json"
+        },
+        "UAVDT_2018_test_cocostyle": {
+            "img_dir": "UAVBenchmark-COCO-format/test",
+            "ann_file": "UAVBenchmark-COCO-format/test.json"
         }
 
     }
