@@ -18,9 +18,9 @@ MODEL:
     FPN_POST_NMS_PER_BATCH: False
   ROI_HEADS:
     USE_FPN: True
-    DETECTIONS_PER_IMG: 1000
+    DETECTIONS_PER_IMG: 1000 # Don't know if this is correct for this dataset?
   ROI_BOX_HEAD:
-    NUM_CLASSES: 11 #+1 for background
+    NUM_CLASSES: 4 #+1 for background
     POOLER_RESOLUTION: 7
     POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
     POOLER_SAMPLING_RATIO: 2
