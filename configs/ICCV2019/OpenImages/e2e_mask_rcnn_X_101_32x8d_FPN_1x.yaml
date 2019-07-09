@@ -43,9 +43,9 @@ DATALOADER:
 SOLVER:
   BASE_LR: 0.00125
   WEIGHT_DECAY: 0.0001
-  STEPS: (11054861, 14739815) #0.66 , 0.88
-  MAX_ITER: 16749790 # 2 epoch
+  STEPS: (2210972, 2947963) #0.66 , 0.88
+  MAX_ITER: 3349958 # 2 epoch
   # # steps. max iter - 1 epoch = # images / batch size
   # num images for Open Images Challenge = 1674979
   IMS_PER_BATCH: 1
-OUTPUT_DIR: "/APL/ICCVResults/OpenImages/MaskRCNN-X-101-32x8d-FPN-July4"
+OUTPUT_DIR: "/APL/ICCVResults/OpenImages/MaskRCNN-X-101-32x8d-FPN-July9"
